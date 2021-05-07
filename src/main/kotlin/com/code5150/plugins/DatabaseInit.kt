@@ -7,7 +7,7 @@ import io.ktor.util.*
 import org.jetbrains.exposed.sql.Database
 import org.slf4j.LoggerFactory
 
-const val HIKARI_CONFIG_KEY = "ktor.hikariconfig"
+const val HIKARI_CONFIG_KEY = "ktor.hikari_config"
 
 @KtorExperimentalAPI
 fun Application.initDatabase() {
