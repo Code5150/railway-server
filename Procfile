@@ -1,0 +1,1 @@
+web: ./build/install/railway-server/bin/railway-server

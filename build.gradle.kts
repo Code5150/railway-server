@@ -39,3 +39,7 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:$kodein_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
 }
+
+tasks.create("stage") {
+    dependsOn("installDist")
+}

@@ -1,5 +1,6 @@
 package com.code5150.plugins
 
+import com.code5150.routing.auth
 import com.code5150.routing.staff
 import io.ktor.routing.*
 import io.ktor.http.*
@@ -17,19 +18,20 @@ fun Application.configureRouting() {
     routing {
         route("/api/v1"){
             staff()
+            auth()
         }
 
         get("/") {
             call.respondText("Hello World!")
         }
-        authenticate(AUTH_CONF_FORM) {
+        /*authenticate(AUTH_CONF_FORM) {
             post("/auth") {
                 val principal = call.principal<UserIdPrincipal>()!!
                     call.sessions.set(principal)
                     log.info("User ${principal.name} logged in")
                     call.respond(HttpStatusCode.OK, "OK")
             }
-        }
+        }*/
         authenticate(AUTH_CONF_SESSION) {
             get("/protected"){
                 val principal = call.principal<UserIdPrincipal>()
