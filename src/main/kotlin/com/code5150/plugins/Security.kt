@@ -1,6 +1,7 @@
 package com.code5150.plugins
 
 import com.code5150.dto.StaffDTO
+import com.code5150.services.StaffService
 import io.ktor.auth.*
 import io.ktor.util.*
 import io.ktor.client.*
@@ -12,11 +13,15 @@ import io.ktor.response.*
 import io.ktor.request.*
 import io.ktor.routing.*
 import io.ktor.sessions.*
+import org.kodein.di.instance
+import org.kodein.di.ktor.closestDI
 
 const val AUTH_CONF_FORM: String = "auth_form"
 const val AUTH_CONF_SESSION: String = "auth_session"
 
 fun Application.configureSecurity() {
+
+    val staffService by closestDI().instance<StaffService>()
 
     authentication {
         form(name = AUTH_CONF_FORM) {
@@ -24,7 +29,8 @@ fun Application.configureSecurity() {
             userParamName = "username"
             passwordParamName = "password"
             validate { credentials ->
-                if (credentials.name == "jetbrains" && credentials.password == "foobar") {
+                if (credentials.name == "jetbrains" && credentials.password == "foobar"
+                    || staffService.checkCredentials(credentials.name, credentials.password)) {
                     UserIdPrincipal(credentials.name)
                 } else {
                     null
