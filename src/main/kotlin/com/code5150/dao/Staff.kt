@@ -9,7 +9,7 @@ import org.jetbrains.exposed.sql.Column
 object Staff: IntIdTable("staff") {
     val name: Column<String> = varchar("name", 50)
     val surname: Column<String> = varchar("surname", 50)
-    val patronymic: Column<String> = varchar("surname", 50)
+    val patronymic: Column<String> = varchar("patronymic", 50)
     val login: Column<String> = varchar("login", 50)
     val password: Column<String> = varchar("password", 50)
     val position: Column<String> = varchar("position", 50)

@@ -14,7 +14,7 @@ fun Route.auth() {
             val principal = call.principal<UserIdPrincipal>()!!
             call.sessions.set(principal)
             call.application.environment.log.info("User ${principal.name} logged in")
-            call.respond(HttpStatusCode.OK, "OK")
+            call.respond(HttpStatusCode.OK, true)
         }
     }
 }

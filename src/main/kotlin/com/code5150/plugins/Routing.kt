@@ -2,6 +2,7 @@ package com.code5150.plugins
 
 import com.code5150.routing.auth
 import com.code5150.routing.staff
+import com.code5150.routing.switch
 import io.ktor.routing.*
 import io.ktor.http.*
 import io.ktor.locations.*
@@ -19,6 +20,7 @@ fun Application.configureRouting() {
         route("/api/v1"){
             staff()
             auth()
+            switch()
         }
 
         get("/") {
