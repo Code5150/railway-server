@@ -14,4 +14,8 @@ class StaffService {
     fun checkCredentials(login: String, password: String): Boolean = transaction {
         !StaffEntity.find { (Staff.login eq login) and (Staff.password eq password) }.empty()
     }
+
+    fun getByUsername(username: String): StaffDTO = transaction {
+        StaffDTO(StaffEntity.find{Staff.login eq username}.first())
+    }
 }

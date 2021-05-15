@@ -13,7 +13,6 @@ plugins {
 
 group = "com.code5150"
 version = "0.0.1"
-//exposed_version = "0.17.13"
 
 application {
     mainClass.set("com.code5150.ApplicationKt")
@@ -50,6 +49,14 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
 }
+
+/*tasks {
+    val java = "15"
+    compileKotlin{
+        kotlinOptions { jvmTarget = java }
+        sourceCompatibility = java
+    }
+}*/
 
 tasks.create("stage") {
     dependsOn("installDist")

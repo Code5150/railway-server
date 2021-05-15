@@ -35,10 +35,8 @@ fun Application.configureRouting() {
             }
         }*/
         authenticate(AUTH_CONF_SESSION) {
-            get("/protected"){
-                val principal = call.principal<UserIdPrincipal>()
-                if (principal != null) call.respondText(principal.name)
-                else call.respond("Fail")
+            get("/getUsername"){
+                call.principal<UserIdPrincipal>()?.let { call.respondText(it.name) } ?: call.respond("Fail")
             }
         }
     }

@@ -21,12 +21,12 @@ fun Application.configureSerialization() {
         get("/json/gson") {
             call.respond(mapOf("hello" to "world"))
         }
-        get("/masters") {
+        /*get("/masters") {
             call.respond(listOf(
                 mapOf("master1" to StaffDTO("Геннадий", "Алексеев", "Дорожный мастер")),
                 mapOf("master2" to StaffDTO("Алексей", "Коровин", "Дорожный мастер"))
             ))
-        }
+        }*/
         get("/sections"){
             call.respond(listOf(
                 SectionDTO(1, listOf(1, 2, 3)),
